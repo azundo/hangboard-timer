@@ -64,6 +64,9 @@ Card = class Card
 			time = "#{time}.000"
 
 		time = time.split(".")
+		# do an effective ceil here
+		if time[1] > 0
+			time[0] = parseInt(time[0]) + 1
 
 		# if we're over a minute, format into minute and second counts
 		if time[0] > 59
@@ -75,14 +78,7 @@ Card = class Card
 
 			return "#{minutes}<span class='colon'>:</span>#{seconds}"
 
-		# if we're over a single digit time, don't show the milliseconds
-		if time[0] > 9
-			return time[0]
-
-		# pad the zeros so that the number doesn't jump around as much
-		while time[1].length < 3
-			time[1] = "#{time[1]}0"
-
-		return time.join("<span class='colon'>:</span>")
+		# return seconds remaining
+		return time[0]
 
 module.exports = Card

@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var C, Card, Dom, FastClick, Form, Sound;
 
@@ -191,9 +191,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $, C, Card, Dom;
 
@@ -263,6 +263,9 @@
 	      time = time + ".000";
 	    }
 	    time = time.split(".");
+	    if (time[1] > 0) {
+	      time[0] = parseInt(time[0]) + 1;
+	    }
 	    if (time[0] > 59) {
 	      minutes = Math.floor(time[0] / 60);
 	      seconds = time[0] % 60;
@@ -271,13 +274,7 @@
 	      }
 	      return minutes + "<span class='colon'>:</span>" + seconds;
 	    }
-	    if (time[0] > 9) {
-	      return time[0];
-	    }
-	    while (time[1].length < 3) {
-	      time[1] = time[1] + "0";
-	    }
-	    return time.join("<span class='colon'>:</span>");
+	    return time[0];
 	  };
 
 	  return Card;
@@ -287,9 +284,9 @@
 	module.exports = Card;
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* Zepto 1.1.6 - zepto event ajax form ie - zeptojs.com/license */
 
@@ -1885,9 +1882,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 	  states: {
@@ -1920,9 +1917,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $;
 
@@ -1942,9 +1939,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var $, C, localstorage;
 
@@ -2043,9 +2040,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var C;
 
@@ -2086,9 +2083,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Base64Binary;
 
@@ -2150,9 +2147,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/*
 	Copyright (c) 2011, Daniel Guerrero
@@ -2250,9 +2247,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 		'use strict';
@@ -3097,5 +3094,5 @@
 	}());
 
 
-/***/ }
+/***/ })
 /******/ ]);
