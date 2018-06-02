@@ -107,6 +107,14 @@ window.hangboardTimer = {
 		else if @playSound && nextState != C.states.get_ready
 			Sound.playBeep()
 
+        # play countdown beeps
+		if @playSound && nextState == C.states.hang
+			Sound.playCountdownBeep(@times[nextState])
+		else if @playSound && nextState == C.states.rest
+			Sound.playCountdownBeep(@times[nextState])
+		else if @playSound && nextState == C.states.get_ready
+			Sound.playCountdownBeep(@times[nextState])
+
 		# short circuit if we hit the end state
 		if nextState == C.states.stopped
 			@stop()

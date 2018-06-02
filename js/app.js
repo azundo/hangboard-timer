@@ -156,6 +156,13 @@
 	    } else if (this.playSound && nextState !== C.states.get_ready) {
 	      Sound.playBeep();
 	    }
+	    if (this.playSound && nextState === C.states.hang) {
+	      Sound.playCountdownBeep(this.times[nextState]);
+	    } else if (this.playSound && nextState === C.states.rest) {
+	      Sound.playCountdownBeep(this.times[nextState]);
+	    } else if (this.playSound && nextState === C.states.get_ready) {
+	      Sound.playCountdownBeep(this.times[nextState]);
+	    }
 	    if (nextState === C.states.stopped) {
 	      this.stop();
 	      return;
@@ -2138,6 +2145,21 @@
 	        })(this), delay);
 	      }
 	      results.push(delay += outerDelay);
+	    }
+	    return results;
+	  },
+	  playCountdownBeep: function(stateDuration) {
+	    var delay, i, k, outerCount, ref, results;
+	    outerCount = 2;
+	    delay = stateDuration - (outerCount * 1000);
+	    results = [];
+	    for (i = k = 0, ref = outerCount; 0 <= ref ? k < ref : k > ref; i = 0 <= ref ? ++k : --k) {
+	      setTimeout((function(_this) {
+	        return function() {
+	          return _this.playBeep();
+	        };
+	      })(this), delay);
+	      results.push(delay += 1000);
 	    }
 	    return results;
 	  },
