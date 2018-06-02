@@ -28,15 +28,13 @@ window.hangboardTimer = {
 		Form.init()
 		FastClick.attach(document.body)
 
-		if @playSound
-			Sound.init()
-
 		Dom.start.on("click tap", =>
 			@start()
 
 			# a sound trigger is required on the start button click, otherwise iOS
 			# blocks it as "autoplay" sound
 			if @playSound
+			    Sound.init()
 				Sound.playBeep()
 		)
 

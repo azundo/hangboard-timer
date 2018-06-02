@@ -74,15 +74,13 @@
 	    Dom.init();
 	    Form.init();
 	    FastClick.attach(document.body);
-	    if (this.playSound) {
-	      Sound.init();
-	    }
 	    Dom.start.on("click tap", (function(_this) {
 	      return function() {
 	        _this.start();
 	        if (_this.playSound) {
-	          return Sound.playBeep();
+	          Sound.init();
 	        }
+	        return Sound.playBeep();
 	      };
 	    })(this));
 	    return Dom.stop.on("click tap", (function(_this) {
