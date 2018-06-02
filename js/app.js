@@ -1991,7 +1991,7 @@
 	    return results;
 	  },
 	  listen: function() {
-	    return $(".taptime-button").on("click tap", (function(_this) {
+	    $(".taptime-button").on("click tap", (function(_this) {
 	      return function(e) {
 	        var button, direction, field;
 	        button = $(e.currentTarget);
@@ -2002,6 +2002,11 @@
 	          direction = "decrement";
 	        }
 	        return _this.changeValue(field, direction);
+	      };
+	    })(this));
+	    return $(".taptime-input").on("change", (function(_this) {
+	      return function(e) {
+	        return localstorage.set(_this.getValues());
 	      };
 	    })(this));
 	  },

@@ -42,6 +42,10 @@ module.exports = {
 
 			@changeValue(field, direction)
 		)
+		$(".taptime-input").on("change", (e) =>
+			localstorage.set(@getValues())
+		)
+
 
 	changeValue: (field, direction) ->
 		value = field.val()
